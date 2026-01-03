@@ -1,25 +1,29 @@
 const express = require("express");
 const app = express();
-let cookieParser = require("cookie-parser");
-const userRouter = require("./routes/user.routes");
-const productRouter = require("./routes/product.routes");
-let cors = require("cors");
+const cookieParser = require("cookie-parser");
+const cors = require("cors");
 
+const userRouter = require("../routes/user.routes");
+const productRouter = require("../routes/product.routes");
+
+// Middleware
 app.use(express.json());
 app.use(cookieParser());
-app.set("trust proxy", 1);
 
+// CORS config
 app.use(
   cors({
-    origin:"http://localhost:5173",
+    origin: "http://localhost:5173", // dev frontend URL
     credentials: true,
   })
 );
 
-app.get("/", (req, res) => {
-  res.send("Hello World!");
+// Test route
+app.get("/api/ping", (req, res) => {
+  res.json({ message: "Backend is alive!" });
 });
 
+// Routers
 app.use("/api/user/auth", userRouter);
 app.use("/api/product", productRouter);
 
