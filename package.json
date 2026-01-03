@@ -1,11 +1,11 @@
 {
-  "name": "backend",
+  "name": "Backend",
   "version": "1.0.0",
-  "main": "backend/server.js",
+  "main": "Backend/server.js",
    "scripts": {
-    "dev": "nodemon backend/server.js",
+    "dev": "nodemon Backend/server.js",
     "build": "npm install --prefix client && npm run build --prefix client",
-    "start": "node backend/server.js"
+    "start": "node Backend/server.js"
   },
   "keywords": [],
   "author": "",
